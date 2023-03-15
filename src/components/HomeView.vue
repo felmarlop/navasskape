@@ -1,21 +1,24 @@
 <template>
   <v-container fluid class="px-0 pb-0 pt-0">
-    <v-img
-      :src="img"
-      :height="imgHeight"
-      :max-height="imgHeight"
-      min-height="600px"
-      class="align-end justify-end"
-      cover
-      @load="onImgLoad"
-    >
-      <template #placeholder>
-        <div class="d-flex align-center justify-center fill-height">
-          <v-progress-circular color="secondary" indeterminate />
-        </div>
-      </template>
-      <quote-view ref="quoteView" v-show="showQuote" />
-    </v-img>
+    <transition name="fade">
+      <v-img
+        :key="src"
+        :src="img"
+        :height="imgHeight"
+        :max-height="imgHeight"
+        min-height="600px"
+        class="align-end justify-end"
+        cover
+        @load="onImgLoad"
+      >
+        <template #placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular color="secondary" indeterminate />
+          </div>
+        </template>
+        <quote-view ref="quoteView" v-show="showQuote" />
+      </v-img>
+    </transition>
   </v-container>
 </template>
 
@@ -102,8 +105,6 @@ export default {
 <style>
 #app .v-container img {
   animation: zoom-in 60s ease infinite;
-  transition: opacity .25s ease-in-out;
-  transition: height 1s ease;
 }
 @keyframes zoom-in {
   0% {
