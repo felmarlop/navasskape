@@ -42,14 +42,20 @@ export default {
     return {
       images: require.context('@/assets/img/media/', false).keys(),
       imgHeight: this.getImageWidth(),
+      isMobile: false,
       imgIndex: -1,
       img: null
     }
   },
   mounted() {
     const context = this
+    this.isMobile = this.$vuetify.display.mobile
+    // New image height when the screen changes
     window.addEventListener('resize', function() {
-      context.imgHeight = context.getImageWidth()
+      if (context.$vuetify.display.mobile != context.isMobile) {
+        context.imgHeight = context.getImageWidth()
+        context.isMobile = context.$vuetify.display.mobile
+      }
     }, true)
   },
   async created() {
@@ -97,6 +103,7 @@ export default {
 #app .v-container img {
   animation: zoom-in 60s ease infinite;
   transition: opacity .25s ease-in-out;
+  transition: height 1s ease;
 }
 @keyframes zoom-in {
   0% {
