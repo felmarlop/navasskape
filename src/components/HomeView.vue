@@ -4,6 +4,7 @@
       :src="img"
       :height="imgHeight"
       :max-height="imgHeight"
+      min-height="600px"
       class="align-end justify-end"
       cover
       @load="onImgLoad"
@@ -44,6 +45,12 @@ export default {
       imgIndex: -1,
       img: null
     }
+  },
+  mounted() {
+    const context = this
+    window.addEventListener('resize', function() {
+      context.imgHeight = context.getImageWidth()
+    }, true)
   },
   async created() {
     this.img = this.getImageUrl()
