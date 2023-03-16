@@ -2,7 +2,7 @@
   <v-container fluid class="px-0 pb-0 pt-0">
     <transition name="fade">
       <v-img
-        :key="src"
+        :key="img"
         :src="img"
         :height="imgHeight"
         :max-height="imgHeight"

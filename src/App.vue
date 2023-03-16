@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <audio-player ref="AudioPlayer" @ended="checkAudio" />
     <init-view v-if="loading" />
     <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!loading">
       <v-row class="pl-5">
@@ -17,6 +18,11 @@
       <v-btn icon>
         <v-icon color="secondary" @click="showQuote = !showQuote">
           {{ showQuote ? 'mdi-message-bulleted' : 'mdi-message-bulleted-off' }}
+        </v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon color="secondary" @click="playAudio = !playAudio">
+          {{ playAudio ? 'mdi-music' : 'mdi-music-off' }}
         </v-icon>
       </v-btn>
     </v-app-bar>
@@ -49,16 +55,19 @@
 </template>
 
 <script>
+import Song from '@/assets/audio/instant_crush.mp3'
 import LogoEagle from '@/assets/img/logo-eagle.png'
 import Logo from '@/assets/img/logo-transparent.png'
 import { APP_TITLE, LOADING_TIMEOUT } from '@/core/config'
 
+import AudioPlayer from './components/AudioPlayer.vue'
 import HomeView from './components/HomeView.vue'
 import InitView from './components/InitView.vue'
 
 export default {
   name: 'App',
   components: {
+    AudioPlayer,
     HomeView,
     InitView
   },
@@ -67,12 +76,25 @@ export default {
     logo: Logo,
     logoEagle: LogoEagle,
     showQuote: true,
+    song: Song,
+    playAudio: false,
     title: APP_TITLE
   }),
+  watch: {
+    playAudio() {
+      this.checkAudio()
+    }
+  },
   created() {
     this.initAnimation()
   },
-  methods: {
+  methods: {   
+    checkAudio() {
+      this.$refs.AudioPlayer?.pause()
+      if (this.playAudio) {
+        this.$refs.AudioPlayer?.play()
+      }
+    },
     initAnimation() {
       this.loading = true
       const context = this
