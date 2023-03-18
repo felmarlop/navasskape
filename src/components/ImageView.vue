@@ -67,9 +67,17 @@ export default {
     this.setImageUrl()
   },
   methods: {
+    cacheImage(uri) {
+      let img = new Image()
+      let l = []
+      img.onload = function() {
+        l = []
+      }
+      l.push(uri)
+      img.src = uri
+    },
     getImageUrl() {
       let imgReturned = null
-
       if (this.cached) {
         imgReturned = this.cached
       } else {
@@ -80,6 +88,7 @@ export default {
       // Cache next image
       this.imgIndex = (this.imgIndex + 1 >= this.images.length) ? 0 : this.imgIndex + 1
       this.cached = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
+      this.cacheImage(this.cached)
 
       return imgReturned
     },
