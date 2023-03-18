@@ -36,6 +36,10 @@ const QUOTES = [
     author: 'Mario Alonso Puig'
   },
   {
+    q: '<< Aquellos que no creen en la magia jamás la encontrarán >>',
+    author: 'Roald Dahl'
+  },
+  {
     q: '<< Un optimista ve en cada peligro una oportunidad >>',
     author: 'Winston Churchill'
   },

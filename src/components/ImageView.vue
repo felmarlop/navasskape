@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout id="main">
     <transition name="fade">
       <v-img
         :key="img"
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style>
-#app .v-layout img {
+#app #main img {
   animation: zoom-in 60s ease infinite;
 }
 @keyframes zoom-in {
