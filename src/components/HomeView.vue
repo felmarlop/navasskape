@@ -43,6 +43,7 @@ export default {
   },
   data() {
     return {
+      cached: null,
       images: require.context('@/assets/img/media/', false).keys(),
       imgHeight: this.getImageWidth(),
       isMobile: false,
@@ -67,15 +68,20 @@ export default {
   },
   methods: {
     getImageUrl() {
-      let name = null
-      if (this.imgIndex < 0) {
-        name = sample(this.images)
-        this.imgIndex = this.images.indexOf(name)
+      let imgReturned = null
+
+      if (this.cached) {
+        imgReturned = this.cached
       } else {
-        this.imgIndex = (this.imgIndex == this.images.length - 1) ? 0 : this.imgIndex + 1
-        name = this.images[this.imgIndex]
+        this.imgIndex = this.images.indexOf(sample(this.images))
+        imgReturned = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
       }
-      return require(`@/assets/img/media/${name.split('/')[1]}`)
+
+      // Cache next image
+      this.imgIndex = (this.imgIndex + 1 >= this.images.length) ? 0 : this.imgIndex + 1
+      this.cached = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
+
+      return imgReturned
     },
     getImageWidth() {
       return window.innerHeight
