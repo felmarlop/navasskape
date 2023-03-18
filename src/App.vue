@@ -26,31 +26,8 @@
         </v-icon>
       </v-btn>
     </v-app-bar>
-    <v-layout v-if="!loading">
-      <home-view :show-quote="showQuote" />
-    </v-layout>
-    <v-footer
-      color="primary"
-      class="font-weight-light text-overlay p-0"
-      flat
-      tile
-      v-if="!loading"
-    >
-      <v-col class="text-center" cols="12">
-        <span>
-          {{ title }} &copy; {{ new Date().getFullYear() }} -
-          <a
-            href="https://www.linkedin.com/in/f%C3%A9lix-mart%C3%ADn-866245b9/"
-            class="text-overlay"
-            target="_blank"
-          >
-            &#64; Félix Martín
-          </a>
-        </span>
-        <br />
-        <span>Las Navas de la Concepción, Sevilla</span>
-      </v-col>
-    </v-footer>
+    <image-view :show-quote="showQuote" v-if="!loading" />
+    <ns-footer v-if="!loading" />
   </v-app>
 </template>
 
@@ -61,14 +38,16 @@ import Logo from '@/assets/img/logo-transparent.png'
 import { APP_TITLE, LOADING_TIMEOUT } from '@/core/config'
 
 import AudioPlayer from './components/AudioPlayer.vue'
-import HomeView from './components/HomeView.vue'
+import NsFooter from './components/Footer.vue'
+import ImageView from './components/ImageView.vue'
 import InitView from './components/InitView.vue'
 
 export default {
   name: 'App',
   components: {
     AudioPlayer,
-    HomeView,
+    NsFooter,
+    ImageView,
     InitView
   },
   data: () => ({ 
@@ -121,13 +100,5 @@ export default {
 }
 #app .mobile {
   font-size: 10px !important;
-}
-#app footer {
-  font-size: 11px;
-  max-height: 80px !important;
-} 
-#app footer a {
-  text-decoration: none;
-  font-weight: bold;
 }
 </style>

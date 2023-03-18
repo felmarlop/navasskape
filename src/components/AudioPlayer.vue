@@ -10,7 +10,7 @@
 import Song from '@/assets/audio/instant_crush.mp3'
 
 export default {
-  name: 'InitView',
+  name: 'AudioPlayer',
   data() {
     return {
       options: {

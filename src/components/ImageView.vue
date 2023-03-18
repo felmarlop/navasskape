@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="px-0 pb-0 pt-0">
+  <v-layout>
     <transition name="fade">
       <v-img
         :key="img"
@@ -19,7 +19,7 @@
         <quote-view ref="quoteView" v-show="showQuote" />
       </v-img>
     </transition>
-  </v-container>
+  </v-layout>
 </template>
 
 <script>
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style>
-#app .v-container img {
+#app .v-layout img {
   animation: zoom-in 60s ease infinite;
 }
 @keyframes zoom-in {
