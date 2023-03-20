@@ -15,13 +15,13 @@
         </v-hover>
       </v-row>
       <v-spacer />
-      <v-btn icon>
-        <v-icon color="secondary" @click="showQuote = !showQuote">
+      <v-btn icon @click="showQuote = !showQuote">
+        <v-icon color="secondary">
           {{ showQuote ? 'mdi-message-bulleted' : 'mdi-message-bulleted-off' }}
         </v-icon>
       </v-btn>
-      <v-btn icon>
-        <v-icon color="secondary" @click="playAudio = !playAudio">
+      <v-btn icon @click="playAudio = !playAudio">
+        <v-icon color="secondary">
           {{ playAudio ? 'mdi-music' : 'mdi-music-off' }}
         </v-icon>
       </v-btn>

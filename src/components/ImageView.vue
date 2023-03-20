@@ -16,16 +16,16 @@
             <v-progress-circular color="secondary" indeterminate />
           </div>
         </template>
-        <quote-view ref="quoteView" v-show="showQuote" />
+        <quote-view ref="quoteView" :index="qIndex" v-show="showQuote" />
       </v-img>
     </transition>
   </v-layout>
 </template>
 
 <script>
-import { sample } from 'lodash'
+import { random, sample } from 'lodash'
 
-import { INTERVAL_TIME } from '@/core/config'
+import { INTERVAL_TIME, QUOTES } from '@/core/config'
 
 import QuoteView from './QuoteView.vue'
 
@@ -48,7 +48,8 @@ export default {
       imgHeight: this.getImageWidth(),
       isMobile: false,
       imgIndex: -1,
-      img: null
+      img: null,
+      qIndex: random(QUOTES.length - 1)
     }
   },
   mounted() {
@@ -98,20 +99,28 @@ export default {
     onImgLoad() {
       const context = this
       setTimeout(function() {
-        if (context.$refs?.quoteView) {
-          context.$refs.quoteView.setQuote()
-        }
+        context.refreshQuote()
       }, 1000)
     },
     setImageUrl() {
       const context = this
       setInterval(function() {
-        context.img = null
         if (context.$refs?.quoteView) {
           context.$refs.quoteView.removeQuote()
         }
+        context.img = null
         setTimeout(function() { context.img = context.getImageUrl() })
       }, INTERVAL_TIME)
+    },
+    refreshQuote() {
+      if (this.qIndex == QUOTES.length - 1) {
+        this.qIndex = 0
+      } else {
+        this.qIndex++
+      }
+      if (this.$refs?.quoteView) {
+        this.$refs.quoteView.setQuote()
+      }
     }
   }
 }

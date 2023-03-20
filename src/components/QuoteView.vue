@@ -6,12 +6,18 @@
           <v-card
             class="quote text-body-1 text-secondary mb-5 mx-5 px-5 pt-5 pb-5 font-weight-light rounded"
           >
-            <p class="font-weight-light mb-4" align="left">
-              {{ quote.q }}
-            </p>
-            <h4 class="subheading" align="right">
-              {{ quote.author }}
-            </h4>
+            <v-row>
+              <v-col cols="12">
+                <p class="font-weight-light mb-4" align="left">
+                  {{ quote.q }}
+                </p>
+              </v-col>
+              <v-col cols="12">
+                <h4 class="subheading" align="right">
+                  {{ quote.author }}
+                </h4>
+              </v-col>
+            </v-row>
           </v-card>
         </div>
       </v-expand-transition>
@@ -20,26 +26,26 @@
 </template>
 
 <script>
-import { random } from 'lodash'
-
 import { QUOTES } from '@/core/config'
+
 
 export default {
   name: 'QuoteView',
+  props: {
+    index: {
+      type: [Number, null],
+      required: false,
+      default: null
+    }
+  },
   data() {
     return {
-      quote: null,
-      qIndex: random(QUOTES.length - 1)
+      quote: null
     }
   },
   methods: {
     setQuote() {
-      if (this.qIndex == QUOTES.length - 1) {
-        this.qIndex = 0
-      } else {
-        this.qIndex++
-      }
-      this.quote = QUOTES[this.qIndex]
+      this.quote = QUOTES[this.index]
     },
     removeQuote() {
       this.quote = null

@@ -24,6 +24,10 @@ const QUOTES = [
     author: 'Alfred Adler'
   },
   {
+    q: '<< Se trata de cómo conduces, no de hacia dónde vas >>',
+    author: 'Noam Shpancer'
+  },
+  {
     q: '<< Ninguna relación importante sobrevive si la confianza se pierde por completo >>',
     author: 'Paul Ekman'
   },
@@ -78,6 +82,14 @@ const QUOTES = [
   {
     q: '<< El bienestar no es algo que se adquiere, sino algo que se cultiva a través de pequeñas acciones diarias >>',
     author: 'Tal Ben-Shahar'
+  },
+  {
+    q: '<< No puedes cambiar el viento, pero puedes ajustar las velas de tu barco >>',
+    author: 'Proverbio chino'
+  },
+  {
+    q: '<< La vida es 10% lo que te sucede y 90% cómo reaccionas ante ello >>',
+    author: 'Charles R. Swindoll'
   },
   {
     q: '<< El optimismo es la fe que conduce al logro >>',
