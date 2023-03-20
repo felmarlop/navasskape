@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import Song from '@/assets/audio/instant_crush.mp3'
 import LogoEagle from '@/assets/img/logo-eagle.png'
 import Logo from '@/assets/img/logo-transparent.png'
 import { APP_TITLE, LOADING_TIMEOUT } from '@/core/config'
@@ -55,7 +54,6 @@ export default {
     logo: Logo,
     logoEagle: LogoEagle,
     showQuote: true,
-    song: Song,
     playAudio: false,
     title: APP_TITLE
   }),

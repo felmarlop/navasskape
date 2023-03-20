@@ -108,8 +108,7 @@ export default {
         if (context.$refs?.quoteView) {
           context.$refs.quoteView.removeQuote()
         }
-        context.img = null
-        setTimeout(function() { context.img = context.getImageUrl() })
+        context.img = context.getImageUrl()
       }, INTERVAL_TIME)
     },
     refreshQuote() {
@@ -129,6 +128,16 @@ export default {
 <style>
 #app #main img {
   animation: zoom-in 60s ease infinite;
+}
+#app #main .fade-enter-active{
+  transition: opacity 1s ease;
+}
+#app #main .fade-leave-active {
+  opacity: 0;
+}
+#app #main .fade-enter-from,
+#app #main .fade-leave-to {
+  opacity: 0;
 }
 @keyframes zoom-in {
   0% {
