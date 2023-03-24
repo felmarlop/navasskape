@@ -46,7 +46,7 @@ export default {
       cached: null,
       images: require.context('@/assets/img/media/', false).keys(),
       imgHeight: this.getImageWidth(),
-      isMobile: false,
+      isLong: false,
       imgIndex: -1,
       img: null,
       qIndex: random(QUOTES.length - 1)
@@ -54,12 +54,12 @@ export default {
   },
   mounted() {
     const context = this
-    this.isMobile = this.$vuetify.display.mobile
+    this.isLong = this.$vuetify.display.mdAndUp
     // New image height when the screen changes
     window.addEventListener('resize', function() {
-      if (context.$vuetify.display.mobile != context.isMobile) {
+      if (context.$vuetify.display.mdAndUp != context.isLong) {
         context.imgHeight = context.getImageWidth()
-        context.isMobile = context.$vuetify.display.mobile
+        context.isLong = context.$vuetify.display.mdAndUp
       }
     }, true)
   },

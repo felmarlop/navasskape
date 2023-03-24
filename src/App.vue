@@ -6,8 +6,8 @@
       <v-row class="pl-5">
         <v-hover v-slot="{ props }">
           <v-img
-            :src="$vuetify.display.mobile ? logoEagle : logo"
-            :max-width="$vuetify.display.mobile ? 40 : 240"
+            :src="$vuetify.display.mdAndUp ? logo : logoEagle"
+            :max-width="$vuetify.display.mdAndUp ? 240 : 40"
             class="ml-5 logo"
             v-bind="props"
             @click="initAnimation()"

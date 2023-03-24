@@ -1,6 +1,6 @@
 <template>
   <v-row justify="end" align="end">
-    <v-col :cols="$vuetify.display.mobile ? 12 : 4">
+    <v-col :cols="$vuetify.display.mdAndUp ? 4 : 12">
       <v-expand-transition appear>
         <div v-if="quote">
           <v-card
