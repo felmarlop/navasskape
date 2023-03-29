@@ -69,7 +69,6 @@ export default {
     }
   },
   created() {
-    this.fullScreen = !window.screenTop && !window.screenY
     this.initAnimation()
   },
   methods: {   
