@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app ref="App">
     <audio-player ref="AudioPlayer" @ended="checkAudio" />
     <init-view v-if="loading" />
     <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!loading">
@@ -25,8 +25,13 @@
           {{ playAudio ? 'mdi-music' : 'mdi-music-off' }}
         </v-icon>
       </v-btn>
+      <v-btn icon @click="handleFullscreen()">
+        <v-icon color="secondary">
+          {{ fullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}
+        </v-icon>
+      </v-btn>
     </v-app-bar>
-    <image-view :show-quote="showQuote" v-if="!loading" />
+    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-if="!loading" />
     <ns-footer v-if="!loading" />
   </v-app>
 </template>
@@ -50,6 +55,7 @@ export default {
     InitView
   },
   data: () => ({ 
+    fullScreen: false,
     loading: true,
     logo: Logo,
     logoEagle: LogoEagle,
@@ -63,6 +69,7 @@ export default {
     }
   },
   created() {
+    this.fullScreen = !window.screenTop && !window.screenY
     this.initAnimation()
   },
   methods: {   
@@ -70,6 +77,16 @@ export default {
       this.$refs.AudioPlayer?.pause()
       if (this.playAudio) {
         this.$refs.AudioPlayer?.play()
+      }
+    },
+    switchFullscreen() {
+      this.fullScreen = !this.fullScreen
+    },
+    handleFullscreen() {
+      if (this.fullScreen) {
+        document.exitFullscreen()
+      } else {
+        document.querySelector('#app').requestFullscreen()
       }
     },
     initAnimation() {

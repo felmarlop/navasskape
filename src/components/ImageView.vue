@@ -62,6 +62,10 @@ export default {
         context.isLong = context.$vuetify.display.mdAndUp
       }
     }, true)
+    window.addEventListener('fullscreenchange', function() {
+      context.imgHeight = context.getImageWidth()
+      context.$emit('switchFullscreen')
+    }, true)
   },
   async created() {
     this.img = this.getImageUrl()
