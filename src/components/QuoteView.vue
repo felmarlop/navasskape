@@ -4,11 +4,11 @@
       <v-expand-transition appear>
         <div v-if="quote">
           <v-card
-            class="quote text-body-1 text-secondary mb-5 mx-5 px-5 pt-5 pb-5 font-weight-light rounded"
+            class="quote text-body-1 text-secondary mb-5 mx-5 px-5 pt-5 pb-5 rounded"
           >
             <v-row>
               <v-col cols="12">
-                <p class="font-weight-light mb-4" align="left">
+                <p class="mb-4 font-weight-light" align="center">
                   {{ quote.q }}
                 </p>
               </v-col>
@@ -56,6 +56,6 @@ export default {
 
 <style>
 #app .quote {
-  background: rgb(var(--v-theme-primary)); background: rgba(var(--v-theme-primary), 0.8);
+  background: rgb(var(--v-theme-primary)); background: rgba(var(--v-theme-primary), 0.9);
 }
 </style>
