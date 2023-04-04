@@ -31,7 +31,7 @@
         </v-icon>
       </v-btn>
     </v-app-bar>
-    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-if="!loading" />
+    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-show="!loading" />
     <ns-footer v-if="!loading" />
   </v-app>
 </template>

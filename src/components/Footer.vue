@@ -2,10 +2,10 @@
   <v-footer color="primary" class="font-weight-light text-overlay p-0" flat tile>
     <v-col class="text-center py-0" cols="12">
       <span>
-        {{ title }} &copy; {{ new Date().getFullYear() }} -
+        {{ title }} &copy; {{ new Date().getFullYear() }}
         <a
           href="https://www.linkedin.com/in/f%C3%A9lix-mart%C3%ADn-866245b9/"
-          class="text-overlay"
+          class="ml-2 text-overlay"
           target="_blank"
         >
           &#64; Félix Martín
@@ -36,5 +36,8 @@ export default {
 #app footer a {
   text-decoration: none;
   font-weight: bold;
+}
+#app footer a:hover {
+  color: rgba(var(--v-theme-secondary)) !important;
 }
 </style>
