@@ -116,6 +116,6 @@ export default {
   font-size: 10px !important;
 }
 #app button {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 } 
 </style>
