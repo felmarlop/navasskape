@@ -1,13 +1,13 @@
 <template>
-  <v-app ref="App">
+  <v-app ref="App" class="bg-primary">
     <audio-player ref="AudioPlayer" @ended="checkAudio" />
-    <init-view v-if="loading" />
-    <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!loading">
+    <init-view v-if="init" />
+    <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!init">
       <v-row class="pl-5">
         <v-hover v-slot="{ props }">
           <v-img
-            :src="$vuetify.display.mdAndUp ? logo : logoEagle"
-            :max-width="$vuetify.display.mdAndUp ? 240 : 40"
+            :src="$vuetify.display.mdAndUp ? logo : logoSingle"
+            :max-width="$vuetify.display.mdAndUp ? 240 : 25"
             class="ml-5 logo"
             v-bind="props"
             @click="initAnimation()"
@@ -31,14 +31,14 @@
         </v-icon>
       </v-btn>
     </v-app-bar>
-    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-show="!loading" />
-    <ns-footer v-if="!loading" />
+    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-show="!init" />
+    <ns-footer v-if="!init" />
   </v-app>
 </template>
 
 <script>
-import LogoEagle from '@/assets/img/logo-eagle.png'
 import Logo from '@/assets/img/logo-transparent.png'
+import LogoSingle from '@/assets/img/single-logo.png'
 import { APP_TITLE, LOADING_TIMEOUT } from '@/core/config'
 
 import AudioPlayer from './components/AudioPlayer.vue'
@@ -56,9 +56,9 @@ export default {
   },
   data: () => ({ 
     fullScreen: false,
-    loading: true,
+    init: true,
     logo: Logo,
-    logoEagle: LogoEagle,
+    logoSingle: LogoSingle,
     showQuote: true,
     playAudio: false,
     title: APP_TITLE
@@ -89,10 +89,10 @@ export default {
       }
     },
     initAnimation() {
-      this.loading = true
+      this.init = true
       const context = this
       setTimeout(function() {
-        context.loading = false
+        context.init = false
       }, LOADING_TIMEOUT)
     }
   }
@@ -115,4 +115,7 @@ export default {
 #app .mobile {
   font-size: 10px !important;
 }
+#app button {
+  font-size: 0.8rem;
+} 
 </style>
