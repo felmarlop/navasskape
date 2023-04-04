@@ -69,7 +69,6 @@ export default {
   },
   async created() {
     this.img = this.getImageUrl()
-    this.setImageUrl()
   },
   methods: {
     cacheImage(uri) {
@@ -83,11 +82,18 @@ export default {
     },
     getImageUrl() {
       let imgReturned = null
+      let context = this
+      let img = new Image()
       if (this.cached) {
         imgReturned = this.cached
       } else {
         this.imgIndex = this.images.indexOf(sample(this.images))
         imgReturned = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
+        img.onload = function() {
+          context.setImageUrl()
+          context.$emit('loaded')
+        }
+        img.src = imgReturned
       }
 
       // Cache next image

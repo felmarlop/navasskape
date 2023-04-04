@@ -1,8 +1,8 @@
 <template>
   <v-app ref="App" class="bg-primary">
     <audio-player ref="AudioPlayer" @ended="checkAudio" />
-    <init-view v-if="init" />
-    <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!init">
+    <init-view v-if="loading" />
+    <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!loading">
       <v-row class="pl-5">
         <v-hover v-slot="{ props }">
           <v-img
@@ -31,8 +31,8 @@
         </v-icon>
       </v-btn>
     </v-app-bar>
-    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" v-show="!init" />
-    <ns-footer v-if="!init" />
+    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" @loaded="loaded = true" v-show="!loading" />
+    <ns-footer v-if="!loading" />
   </v-app>
 </template>
 
@@ -57,12 +57,18 @@ export default {
   data: () => ({ 
     fullScreen: false,
     init: true,
+    loaded: false,
     logo: Logo,
     logoSingle: LogoSingle,
     showQuote: true,
     playAudio: false,
     title: APP_TITLE
   }),
+  computed: {
+    loading() {
+      return !this.loaded || this.init
+    }
+  },
   watch: {
     playAudio() {
       this.checkAudio()
@@ -115,7 +121,4 @@ export default {
 #app .mobile {
   font-size: 10px !important;
 }
-#app button {
-  font-size: 0.9rem;
-} 
 </style>
