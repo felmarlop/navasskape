@@ -17,7 +17,7 @@
       <v-spacer />
       <v-btn icon @click="showQuote = !showQuote">
         <v-icon color="secondary">
-          {{ showQuote ? 'mdi-message-bulleted' : 'mdi-message-bulleted-off' }}
+          {{ showQuote ? 'mdi-card-text' : 'mdi-card-bulleted-off' }}
         </v-icon>
       </v-btn>
       <v-btn icon @click="playAudio = !playAudio">
