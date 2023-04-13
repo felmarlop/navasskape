@@ -5,6 +5,7 @@
         <div v-if="quote">
           <v-card
             class="quote mb-5 mx-5 px-5 pt-5 pb-5 rounded"
+            color="rgba(var(--v-theme-primary), 0.9)"
           >
             <v-row>
               <v-col cols="12">
@@ -53,9 +54,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app .quote {
-  background: rgb(var(--v-theme-primary)); background: rgba(var(--v-theme-primary), 0.9);
-}
-</style>
