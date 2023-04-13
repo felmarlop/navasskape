@@ -20,6 +20,11 @@ npm run serve
 npm run build
 ```
 
+### Deploy
+```
+git push origin `git subtree split --prefix dist master`:gh-pages --force
+```
+
 ### Lints and fixes files
 ```
 npm run lint
