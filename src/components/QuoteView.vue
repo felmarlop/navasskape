@@ -4,16 +4,16 @@
       <v-expand-transition appear>
         <div v-if="quote">
           <v-card
-            class="quote text-overlay font-weight-medium mb-5 mx-5 px-5 pt-5 pb-5 rounded"
+            class="quote mb-5 mx-5 px-5 pt-5 pb-5 rounded"
           >
             <v-row>
               <v-col cols="12">
-                <p class="mb-4 text-body-1" align="left">
+                <p class="mb-4 text-overlay text-body-1 font-italic" align="left">
                   {{ quote.q }}
                 </p>
               </v-col>
               <v-col cols="12">
-                <h4 align="right">
+                <h4 class="text-secondary" align="right">
                   {{ quote.author }}
                 </h4>
               </v-col>
@@ -56,6 +56,6 @@ export default {
 
 <style>
 #app .quote {
-  background: rgb(var(--v-theme-secondary)); background: rgba(var(--v-theme-secondary), 0.9);
+  background: rgb(var(--v-theme-primary)); background: rgba(var(--v-theme-primary), 0.9);
 }
 </style>
