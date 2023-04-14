@@ -100,7 +100,7 @@ const QUOTES = [
     author: 'Lao Tse'
   },
   {
-    q: '<< La vida es lo que te pasa mientras estás ocupado haciendo otros planes >>',
+    q: '<< La vida es lo que pasa mientras estás ocupado haciendo otros planes >>',
     author: 'John Lennon'
   },
   {
