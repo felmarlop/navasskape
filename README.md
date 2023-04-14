@@ -20,9 +20,9 @@ npm run serve
 npm run build
 ```
 
-### Deploy
+### Compiles and deploy to production
 ```
-git push origin `git subtree split --prefix dist master`:gh-pages --force
+npm run deploy
 ```
 
 ### Lints and fixes files
