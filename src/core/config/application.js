@@ -8,6 +8,14 @@ const APP_TITLE = VUE_APP_TITLE
 
 const QUOTES = [
   {
+    q: '<< Sé el cambio que quieres ver en el mundo >>',
+    author: 'Mahatma Gandhi'
+  },
+  {
+    q: '<< Cree que puedes hacerlo y ya estarás a medio camino >>',
+    author: 'Theodore Roosevelt '
+  },
+  {
     q: '<< Salta y aparecerá la red >>',
     author: 'Julia Cameron'
   },
@@ -34,6 +42,14 @@ const QUOTES = [
   {
     q: '<< La inteligencia es lo que usas cuando no sabes qué hacer >>',
     author: 'Jean Piaget'
+  },
+  {
+    q: '<< La mente es como un paracaídas, solo funciona si se abre >>',
+    author: 'Frank Zappa'
+  },
+  {
+    q: '<< La verdadera sabiduría está en reconocer la propia ignorancia >>',
+    author: 'Sócrates'
   },
   {
     q: '<< Las personas sólo cambiamos de verdad cuando nos damos cuenta de las consecuencias de no hacerlo >>',
@@ -64,10 +80,6 @@ const QUOTES = [
     author: 'El principito, Antoine de Saint-Exupéry'
   },
   {
-    q: '<< La felicidad no es algo hecho. Viene de tus propias acciones >>',
-    author: 'Dalai Lama'
-  },
-  {
     q: '<< Si quieres vivir una vida feliz, átala a una meta, no a una persona o un objeto >>',
     author: 'Albert Einstein'
   },
@@ -76,12 +88,20 @@ const QUOTES = [
     author: 'Dale Carnegie'
   },
   {
-    q: '<< La gratitud es el mejor antídoto contra la tristeza y la frustración. Practícala todos los días >>',
+    q: '<< La gratitud es el mejor antídoto contra la tristeza y la frustración >>',
     author: 'Martin Seligman'
   },
   {
-    q: '<< El bienestar no es algo que se adquiere, sino algo que se cultiva a través de pequeñas acciones diarias >>',
-    author: 'Tal Ben-Shahar'
+    q: '<< La mente que se abre a una nueva idea jamás volverá a su tamaño original >>',
+    author: 'Albert Einstein'
+  },
+  {
+    q: '<< El que conoce a los demás es inteligente; el que se conoce a sí mismo es sabio >>',
+    author: 'Lao Tse'
+  },
+  {
+    q: '<< La vida es lo que te pasa mientras estás ocupado haciendo otros planes >>',
+    author: 'John Lennon'
   },
   {
     q: '<< No puedes cambiar el viento, pero puedes ajustar las velas de tu barco >>',
@@ -96,20 +116,24 @@ const QUOTES = [
     author: 'Helen Keller'
   },
   {
-    q: '<< La mayor parte de nuestras inseguridades y de nuestras desesperanzas no son reales, son aprendidas >>',
-    author: 'Mario Alonso Puig'
+    q: '<< No podemos resolver problemas pensando de la misma manera que cuando los creamos >>',
+    author: 'Albert Einstein'
   },
   {
-    q: '<< Una mente no puede entenderse sin la cultura >>',
-    author: 'Lev Vygotsky'
+    q: '<< La mente lo es todo. En lo que piensas, te conviertes >>',
+    author: 'Buda'
+  },
+  {
+    q: '<< La única forma de hacer un gran trabajo es amar lo que haces >>',
+    author: 'Steve Jobs'
+  },
+  {
+    q: '<< La mayor parte de nuestras inseguridades no son reales, son aprendidas >>',
+    author: 'Mario Alonso Puig'
   },
   {
     q: '<< Eres aquello que haces, no aquello que dices que harás >>',
     author: 'Carl Jung'
-  },
-  {
-    q: '<< Viajar es una buena forma de aprender y de superar miedos >>',
-    author: 'Luis Rojas Marcos'
   },
   {
     q: '<< La forma de hablarnos a nosotros mismos afecta tremendamente a nuestra manera de relacionarnos con el mundo >>',
