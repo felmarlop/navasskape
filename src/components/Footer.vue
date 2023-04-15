@@ -1,6 +1,6 @@
 <template>
-  <v-footer color="primary" class="font-weight-light text-overlay" flat tile>
-    <v-col class="text-center py-0" cols="12">
+  <v-footer color="primary" class="font-weight-light text-overlay p-0" flat tile>
+    <v-col class="text-center py-1" cols="12">
       <span>
         {{ title }} &copy; {{ new Date().getFullYear() }}
         <a
