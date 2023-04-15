@@ -106,11 +106,11 @@ export default {
 </script>
 
 <style>
-#app, #app .text-body-2 {
+#app, #app .text-body-1, #app h4 {
   font-family: 'Roboto', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  font-size: 1em !important;
 }
 #app .logo-rounded {
   border-radius: 0 20px 20px 0;

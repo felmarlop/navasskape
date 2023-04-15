@@ -6,7 +6,6 @@
         :src="img"
         :height="imgHeight"
         :max-height="imgHeight"
-        min-height="600px"
         class="align-end justify-end"
         cover
         @load="onImgLoad"
