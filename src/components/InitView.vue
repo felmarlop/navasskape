@@ -3,7 +3,7 @@
     <v-col cols="12" align="center" class="px-10">
       <v-img :src="logo" max-width="700" class="logo-rounded mb-5" @load="onImgLoad" />
       <span class="font-weight-light text-secondary text-body-2" :class="{ mobile: !$vuetify.display.mdAndUp }" v-if="isLoaded">
-        CONECTA CONTIGO MISMO<br />LAS NAVAS DE LA CONCEPCIÓN, SEVILLA
+        -·- DESCONECTA -·-<v-icon class="mb-1">mdi-power-plug mdi-rotate-90</v-icon><br />LAS NAVAS DE LA CONCEPCIÓN, SEVILLA
       </span>
     </v-col>
   </v-row>
