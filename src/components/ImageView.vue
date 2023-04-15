@@ -24,7 +24,7 @@
 <script>
 import { random, sample } from 'lodash'
 
-import { INTERVAL_TIME, QUOTES } from '@/core/config'
+import { IMG_COUNTER_ANIMATION, INTERVAL_TIME, QUOTES } from '@/core/config'
 
 import QuoteView from './QuoteView.vue'
 
@@ -43,6 +43,8 @@ export default {
   data() {
     return {
       cached: null,
+      counter: 0,
+      intv: null,
       images: require.context('@/assets/img/media/', false).keys(),
       imgHeight: this.getImageWidth(),
       isLong: false,
@@ -89,7 +91,6 @@ export default {
         this.imgIndex = this.images.indexOf(sample(this.images))
         imgReturned = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
         img.onload = function() {
-          context.setImageUrl()
           context.$emit('loaded')
         }
         img.src = imgReturned
@@ -113,7 +114,14 @@ export default {
     },
     setImageUrl() {
       const context = this
-      setInterval(function() {
+      this.counter = 0
+      clearInterval(this.intv)
+      this.intv = setInterval(function() {
+        context.counter++
+        if (context.counter > IMG_COUNTER_ANIMATION) {
+          context.counter = 1
+          context.$emit('initAnimation')
+        }
         if (context.$refs?.quoteView) {
           context.$refs.quoteView.removeQuote()
         }

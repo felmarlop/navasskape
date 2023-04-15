@@ -31,7 +31,14 @@
         </v-icon>
       </v-btn>
     </v-app-bar>
-    <image-view :show-quote="showQuote" @switch-fullscreen="switchFullscreen" @loaded="loaded = true" v-show="!loading" />
+    <image-view
+      ref="ImageView"
+      :show-quote="showQuote"
+      @switch-fullscreen="switchFullscreen"
+      @loaded="loaded = true"
+      @init-animation="initAnimation()"
+      v-show="!loading"
+    />
     <ns-footer v-if="!loading" />
   </v-app>
 </template>
@@ -70,6 +77,11 @@ export default {
     }
   },
   watch: {
+    loading(v) {
+      if (!v) {
+        this.$refs.ImageView?.setImageUrl()
+      }
+    },
     playAudio() {
       this.checkAudio()
     }
@@ -110,7 +122,7 @@ export default {
   font-family: 'Roboto', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1em !important;
+  font-size: 0.9em !important;
 }
 #app .logo-rounded {
   border-radius: 0 20px 20px 0;
