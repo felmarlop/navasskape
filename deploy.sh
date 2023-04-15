@@ -14,7 +14,7 @@ echo 'navasskape.online' > CNAME
 
 git init
 git add -A
-git commit -m "new deployment `date +'%Y-%m-%d %H:%M:%S'`"
+git commit -m "new deployment `date +'%d-%m-%Y %H:%M'`"
 
 # push to gh-pages branch
 git push -f https://github.com/felmarlop/navasskape.git master:gh-pages
