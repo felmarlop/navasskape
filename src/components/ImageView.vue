@@ -12,7 +12,7 @@
       >
         <template #placeholder>
           <div class="d-flex align-center justify-center fill-height">
-            <v-progress-circular color="secondary" indeterminate />
+            <v-progress-circular color="secondary" indeterminate :width="4" :size="25" />
           </div>
         </template>
         <quote-view ref="quoteView" :index="qIndex" v-show="showQuote" />
@@ -118,9 +118,9 @@ export default {
       clearInterval(this.intv)
       this.intv = setInterval(function() {
         context.counter++
-        if (context.counter > IMG_COUNTER_ANIMATION) {
-          context.counter = 1
-          context.$emit('initAnimation')
+        if (context.counter >= IMG_COUNTER_ANIMATION) {
+          context.counter = 0
+          context.$emit('initAnimation', 10000)
         }
         if (context.$refs?.quoteView) {
           context.$refs.quoteView.removeQuote()

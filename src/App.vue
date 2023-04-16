@@ -1,7 +1,7 @@
 <template>
   <v-app ref="App" class="bg-primary">
     <audio-player ref="AudioPlayer" @ended="checkAudio" />
-    <init-view v-if="loading" />
+    <init-view :img-loading="imgLoading" v-if="loading" />
     <v-app-bar height="50" color="rgba(var(--v-theme-primary), 0.4)" elevation="0" v-if="!loading">
       <v-row class="pl-5">
         <v-hover v-slot="{ props }">
@@ -74,6 +74,9 @@ export default {
   computed: {
     loading() {
       return !this.loaded || this.init
+    },
+    imgLoading() {
+      return !this.loaded && !this.init
     }
   },
   watch: {
@@ -106,12 +109,12 @@ export default {
         document.querySelector('#app').requestFullscreen()
       }
     },
-    initAnimation() {
+    initAnimation(tm) {
       this.init = true
       const context = this
       setTimeout(function() {
         context.init = false
-      }, LOADING_TIMEOUT)
+      }, tm || LOADING_TIMEOUT)
     }
   }
 }
