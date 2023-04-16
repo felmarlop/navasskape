@@ -12,7 +12,12 @@ cd dist
 # deploy to a custom domain
 echo 'navasskape.online' > CNAME
 
-git init
+if [[ ! -d "./.git" ]]
+then
+  echo "Initializing git..."
+  git init
+fi
+
 git add -A
 git commit -m "new deployment `date +'%d-%m-%Y %H:%M'`"
 
