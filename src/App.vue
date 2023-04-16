@@ -7,7 +7,7 @@
         <v-hover v-slot="{ props }">
           <v-img
             :src="$vuetify.display.mdAndUp ? logo : logoSingle"
-            :max-width="$vuetify.display.mdAndUp ? 240 : 25"
+            :max-width="$vuetify.display.mdAndUp ? 240 : 45"
             class="ml-5 logo"
             v-bind="props"
             @click="initAnimation()"
