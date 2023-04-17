@@ -14,7 +14,7 @@ echo 'navasskape.online' > CNAME
 
 if [[ ! -d "./.git" ]]
 then
-  echo "Initializing git..."
+  echo "Initializing GIT repository..."
   git init
 fi
 
