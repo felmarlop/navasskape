@@ -49,6 +49,9 @@ export default {
   font-size: 1.5em;
   margin-right: -0.25%;
 }
+#app .logo-rounded {
+  border-radius: 0 20px 20px 0;
+}
 @keyframes fade-in {
   0% {
     opacity: 0;
