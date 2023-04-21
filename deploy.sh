@@ -25,3 +25,4 @@ git commit -m "new deployment `date +'%d-%m-%Y %H:%M'`"
 git push -f https://github.com/felmarlop/navasskape.git master:gh-pages
 
 cd -
+echo "Deployment finished!"
