@@ -8,10 +8,10 @@
         :max-height="imgHeight"
         class="align-end justify-end"
         cover
-        @load="onImgLoad"
+        @load="refreshQuote"
       >
         <v-btn
-          color="transparent"
+          variant="text"
           class="text-overlay"
           size="x-large"
           icon
@@ -21,7 +21,7 @@
           <v-icon color="secondary" size="large" icon="mdi-chevron-left" />
         </v-btn>
         <v-btn
-          color="transparent"
+          variant="text"
           class="text-overlay"
           size="x-large"
           icon
@@ -131,12 +131,6 @@ export default {
     getImageWidth() {
       return window.innerHeight
     },
-    onImgLoad() {
-      const context = this
-      setTimeout(function() {
-        context.refreshQuote()
-      }, 1000)
-    },
     setImageUrl(prev, next) {
       const context = this
       this.counter = 0
@@ -163,7 +157,10 @@ export default {
         this.qIndex++
       }
       if (this.$refs?.quoteView) {
-        this.$refs.quoteView.setQuote()
+        const context = this
+        setTimeout(function() {
+          context.$refs.quoteView.setQuote()
+        }, 1000)
       }
     }
   }
