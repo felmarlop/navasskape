@@ -9,7 +9,7 @@
           >
             <v-row>
               <v-col cols="12">
-                <p class="mb-4 text-overlay text-body-1 font-italic" align="left">
+                <p class="mb-4 text-overlay text-secondary font-italic" align="left">
                   {{ quote.q }}
                 </p>
               </v-col>

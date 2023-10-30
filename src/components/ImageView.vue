@@ -10,6 +10,26 @@
         cover
         @load="onImgLoad"
       >
+        <v-btn
+          color="transparent"
+          class="text-overlay"
+          size="x-large"
+          icon
+          style="bottom: 40%; left: 2px; position: absolute"
+          @click="setImageUrl(true)"
+        >
+          <v-icon color="secondary" size="large" icon="mdi-chevron-left" />
+        </v-btn>
+        <v-btn
+          color="transparent"
+          class="text-overlay"
+          size="x-large"
+          icon
+          style="bottom: 40%; right: 2px; position: absolute"
+          @click="setImageUrl(false, true)"
+        >
+          <v-icon color="secondary" size="large" icon="mdi-chevron-right" />
+        </v-btn>
         <template #placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular color="secondary" indeterminate :width="4" :size="25" />
@@ -81,14 +101,19 @@ export default {
       l.push(uri)
       img.src = uri
     },
-    getImageUrl() {
+    getImageUrl(prev) {
       let imgReturned = null
+      let imgLen = this.images.length
       let context = this
       let img = new Image()
-      if (this.cached) {
+      if (this.cached && !prev) {
         imgReturned = this.cached
       } else {
-        this.imgIndex = this.images.indexOf(sample(this.images))
+        if (prev && this.imgIndex >= 0) {
+          this.imgIndex = (this.imgIndex - 2 < 0) ? imgLen - 1 : this.imgIndex - 2
+        } else {
+          this.imgIndex = this.images.indexOf(sample(this.images))
+        }
         imgReturned = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
         img.onload = function() {
           context.$emit('loaded')
@@ -97,7 +122,7 @@ export default {
       }
 
       // Cache next image
-      this.imgIndex = (this.imgIndex + 1 >= this.images.length) ? 0 : this.imgIndex + 1
+      this.imgIndex = (this.imgIndex + 1 >= imgLen) ? 0 : this.imgIndex + 1
       this.cached = require(`@/assets/img/media/${this.images[this.imgIndex].split('/')[1]}`)
       this.cacheImage(this.cached)
 
@@ -112,7 +137,7 @@ export default {
         context.refreshQuote()
       }, 1000)
     },
-    setImageUrl() {
+    setImageUrl(prev, next) {
       const context = this
       this.counter = 0
       clearInterval(this.intv)
@@ -127,6 +152,9 @@ export default {
         }
         context.img = context.getImageUrl()
       }, INTERVAL_TIME)
+      if (prev || next) {
+        this.img = this.getImageUrl(prev)
+      }
     },
     refreshQuote() {
       if (this.qIndex == QUOTES.length - 1) {
