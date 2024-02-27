@@ -9,9 +9,6 @@ npm run build
 # navigate into the build output directory
 cd dist
 
-# deploy to a custom domain
-echo 'navasskape.online' > CNAME
-
 if [[ ! -d "./.git" ]]
 then
   echo "Initializing GIT repository..."

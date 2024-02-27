@@ -2,7 +2,7 @@
   "name": "navasskape",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://navasskape.online",
+  "homepage": "/navasskape",
   "scripts": {
     "serve": "vue-cli-service serve --port 8087",
     "build": "vue-cli-service build",
